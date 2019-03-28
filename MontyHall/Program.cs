@@ -6,8 +6,8 @@ namespace MontyHall
     {
         static void Main(string[] args)
         {
-            int stayWins = 0;
-            int changeWins = 0;
+            var stayWins = 0;
+            var changeWins = 0;
 
             Console.WriteLine(
                 "Solving the Monty Hall Problem!\n" +
@@ -60,8 +60,8 @@ namespace MontyHall
 
         static bool SolveProblem(bool stay)
         {
-            String[] doors = { "goat", "goat", "car" };
-            Random rng = new Random();
+            string[] doors = { "goat", "goat", "car" };
+            var rng = new Random();
             int initialChoice = rng.Next(doors.Length);
             int openedDoor;
             do
