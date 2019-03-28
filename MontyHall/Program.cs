@@ -27,6 +27,7 @@ namespace MontyHall
                 {
                     stayWins++;
                 }
+
                 if (SolveProblem(false))
                 {
                     changeWins++;
@@ -44,7 +45,8 @@ namespace MontyHall
             if (changeWins > stayWins)
             {
                 Console.WriteLine("Changing your choice!");
-            } else if (stayWins > changeWins)
+            }
+            else if (stayWins > changeWins)
             {
                 Console.WriteLine("Sticking with your first choice!");
             }
