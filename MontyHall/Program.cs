@@ -6,22 +6,22 @@ namespace MontyHall
     {
         static void Main(string[] args)
         {
-            int i = 1000;
             int stayWins = 0;
             int changeWins = 0;
 
-            Console.WriteLine("Solving the Monty Hall Problem!");
-            Console.WriteLine("");
-            Console.WriteLine("A game show with three doors. Behind one door is a car,");
-            Console.WriteLine("behind the other two are a goat each. You choose a door.");
-            Console.WriteLine("The host now opens one of the goat doors and offers to");
-            Console.WriteLine("let you change your choice before revealing which door is");
-            Console.WriteLine("the one with the car. Is it better, worse, or the same to");
-            Console.WriteLine("change your choice?");
-            Console.WriteLine("");
-            Console.WriteLine("Let's put it to the test!");
+            Console.WriteLine(
+                "Solving the Monty Hall Problem!\n" +
+                "\n" +
+                "A game show with three doors. Behind one door is a car,\n" +
+                "behind the other two are a goat each. You choose a door.\n" +
+                "The host now opens one of the goat doors and offers to\n" +
+                "let you change your choice before revealing which door is\n" +
+                "the one with the car. Is it better, worse, or the same to\n" +
+                "change your choice?\n" +
+                "\n" +
+                "Let's put it to the test!");
 
-            while (i-- > 0)
+            for (var i = 0; i < 1000; i++)
             {
                 if (SolveProblem(true))
                 {
@@ -34,27 +34,28 @@ namespace MontyHall
                 }
             }
 
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine("Staying on first choice...");
-            Console.WriteLine("Won the car " + stayWins + "/1000 times");
-            Console.WriteLine("Changing our choice...");
-            Console.WriteLine("Won the car " + changeWins + "/1000 times");
-            Console.WriteLine("-------------------------------------");
+            Console.WriteLine(
+                "-------------------------------------\n" +
+                "Staying on first choice...\n" +
+                "Won the car {0:D}/1000 times\n" +
+                "Changing our choice...\n" +
+                "Won the car {1:D}/1000 times\n" +
+                "-------------------------------------\n" +
+                "The winning move is...",
+                stayWins, changeWins);
 
-            Console.WriteLine("The winning move is...");
             if (changeWins > stayWins)
             {
-                Console.WriteLine("Changing your choice!");
+                Console.WriteLine("Changing your choice!\n");
             }
             else if (stayWins > changeWins)
             {
-                Console.WriteLine("Sticking with your first choice!");
+                Console.WriteLine("Sticking with your first choice!\n");
             }
             else
             {
-                Console.WriteLine("Not to play!");
+                Console.WriteLine("Not to play!\n");
             }
-            Console.WriteLine("");
         }
 
         static bool SolveProblem(bool stay)
@@ -67,7 +68,7 @@ namespace MontyHall
             {
                 openedDoor = rng.Next(doors.Length);
             }
-            while (openedDoor == initialChoice || doors[openedDoor] == "car" );
+            while ((openedDoor == initialChoice) || (doors[openedDoor] == "car"));
 
             if (stay)
             {
@@ -80,7 +81,7 @@ namespace MontyHall
                 {
                     newChoice = rng.Next(doors.Length);
                 }
-                while (newChoice == initialChoice || newChoice == openedDoor);
+                while ((newChoice == initialChoice) || (newChoice == openedDoor));
 
                 return (doors[newChoice] == "car");
             }
